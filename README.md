@@ -10,6 +10,8 @@ Run workload where and when carbon-efficient energy is available for computing.
 
 Configure the Kubernetes scheduler to create pods on the eligible nodes with the highest carbon efficiency and subsequently the lowest greenhouse gas emissions.
 
+Node score is a 64-bit signed binary integer, so that can store high values of carbon efficiency.
+
 # Setup
 
 1. Create a Kubernetes cluster (https://kubernetes.io/docs/setup/)

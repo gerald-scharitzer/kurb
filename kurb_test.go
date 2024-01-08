@@ -6,7 +6,7 @@ import (
 
 func TestKurb(t *testing.T) {
 	want := "kurb"
-	result := Run()
+	result := Name()
 	if want != result {
 		t.Fatal("failed")
 	}
