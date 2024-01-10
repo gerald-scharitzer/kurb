@@ -23,6 +23,16 @@ Node score is a 64-bit signed binary integer, so that can store high values of c
 Configuring the scheduler such that nodes with the highest carbon efficiency are picked first (https://kubernetes.io/docs/reference/scheduling/config/) by configuring the plugin NodeResourcesFit (https://kubernetes.io/docs/concepts/scheduling-eviction/resource-bin-packing/) does not work, because the carbon efficiency is a node level attribute.
 None of the default plugins extending the `score` phase supports that.
 
+## Scheduler Plugins
+
+must be [compiled together](https://github.com/kubernetes/kubernetes#to-start-using-k8s) with the `kube-scheduler`,
+because while the versioned API is stable,
+the [internal structures](https://github.com/kubernetes/community/blob/master/contributors/devel/sig-architecture/api_changes.md#so-you-want-to-change-the-api) (Go programming interfaces),
+like the extension points for scheduler plugins,
+are not stable.
+
+The scheduler framework is Go package [`k8s.io/kubernetes/pkg/scheduler/framework`](https://pkg.go.dev/k8s.io/kubernetes/pkg/scheduler/framework), but using the packages `k8s.io/kubernetes/...` as libraries is [not suppored](https://github.com/kubernetes/kubernetes/tree/master#to-start-using-k8s).
+
 # Rationale
 
 Carbon-efficient energy sources are more variable than other sources.
