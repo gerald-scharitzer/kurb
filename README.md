@@ -31,11 +31,13 @@ the [internal structures](https://github.com/kubernetes/community/blob/master/co
 like the extension points for scheduler plugins,
 are not stable.
 
-The scheduler framework is Go package [`k8s.io/kubernetes/pkg/scheduler/framework`](https://pkg.go.dev/k8s.io/kubernetes/pkg/scheduler/framework), but using the packages `k8s.io/kubernetes/...` as libraries is [not suppored](https://github.com/kubernetes/kubernetes/tree/master#to-start-using-k8s).
+The scheduler framework is Go package [`k8s.io/kubernetes/pkg/scheduler/framework`](https://pkg.go.dev/k8s.io/kubernetes/pkg/scheduler/framework), but using the packages `k8s.io/kubernetes/...` as libraries is [not supported](https://github.com/kubernetes/kubernetes/tree/master#to-start-using-k8s).
+
+Copy internal Kubernetes types to verify the concept.
 
 # Rationale
 
-Carbon-efficient energy sources are more variable than other sources.
+Carbon-efficient energy sources like sun and wind are more variable than other sources.
 This affects the availability of carbon-efficient energy to substantial consumers like data centers.
 Computing workload is relatively free in both time and space.
 Following the availability of carbon-efficient energy along the globe improves the carbon efficieny of cloud computing.

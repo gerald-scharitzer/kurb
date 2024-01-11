@@ -11,7 +11,8 @@ func Name() string {
 
 // TODO implement k8s.io/kubernetes/pkg/scheduler/framework.PreScorePlugin
 // to read the carbon efficiency from the node labels
-func PreScore(ctx context.Context) {
+func PreScore(ctx context.Context) *Status {
+	return &Status_Success
 }
 
 // TODO implement k8s.io/kubernetes/pkg/scheduler/framework.ScorePlugin
