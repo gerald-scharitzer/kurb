@@ -30,3 +30,12 @@ func TestPod1(t *testing.T) {
 		t.Fatal("failed")
 	}
 }
+
+func TestSchedule(t *testing.T) {
+	want := MinimumCarbonEfficiency
+	var nodes []Node
+	result := Schedule(nodes)
+	if want != result {
+		t.Fatal("failed")
+	}
+}

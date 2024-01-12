@@ -3,7 +3,7 @@ package kurb
 // Carbon efficiency is the amount of energy that can be obtained per mass of carbon dioxide equivalent in joule per kilogram.
 type CarbonEfficiency int64
 
-const MaximumCarbonEfficiency CarbonEfficiency = 0x7fff_ffff_ffff_ffff
+const MinimumCarbonEfficiency CarbonEfficiency = -0x8000_0000_0000_0000
 
 // Nodes run Pods.
 // Nodes have resources to process workloads.
@@ -18,9 +18,15 @@ type Pod struct {
 }
 
 // Get the lowest carbon efficiency of all nodes.
-// Return MaximumCarbonEfficiency when for an empty set of nodes
+// Return MinimumCarbonEfficiency for an empty set of nodes
 func Schedule(nodes []Node) CarbonEfficiency {
-	var ce CarbonEfficiency = MaximumCarbonEfficiency
-	// TODO min over node.CarbonEfficiency
+	var ce CarbonEfficiency = MinimumCarbonEfficiency
+	// max over node.CarbonEfficiency
+	for _, node := range nodes {
+		nce := node.CarbonEfficiency
+		if nce < ce {
+			ce = nce
+		}
+	}
 	return ce
 }
