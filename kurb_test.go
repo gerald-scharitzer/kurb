@@ -14,7 +14,7 @@ func TestKurb(t *testing.T) {
 
 func TestPreScore(t *testing.T) {
 	var want *Status = &Status_Success
-	result := PreScore(nil)
+	result := PreScore(nil, nil)
 	if want != result {
 		t.Fatal("failed")
 	}
