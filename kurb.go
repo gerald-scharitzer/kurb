@@ -1,19 +1,26 @@
 package kurb
 
-import (
-	"context"
-)
+// Carbon efficiency is the amount of energy that can be obtained per mass of carbon dioxide equivalent in joule per kilogram.
+type CarbonEfficiency int64
 
-// implement k8s.io/kubernetes/pkg/scheduler/framework.Plugin
-func Name() string {
-	return "kurb"
+const MaximumCarbonEfficiency CarbonEfficiency = 0x7fff_ffff_ffff_ffff
+
+// Nodes run Pods.
+// Nodes have resources to process workloads.
+type Node struct {
+	CarbonEfficiency CarbonEfficiency
 }
 
-// TODO implement k8s.io/kubernetes/pkg/scheduler/framework.PreScorePlugin
-// to read the carbon efficiency from the node labels
-func PreScore(ctx context.Context, state *CycleState) *Status {
-	return &Status_Success
+// Pods are units of work (an amount of workload) that can be scheduled to run on nodes.
+type Pod struct {
+	// The pod runs on this node. `nil` is no node and then the pod does not run.
+	Node *Node
 }
 
-// TODO implement k8s.io/kubernetes/pkg/scheduler/framework.ScorePlugin
-// to score nodes by their carbon efficiency
+// Get the lowest carbon efficiency of all nodes.
+// Return MaximumCarbonEfficiency when for an empty set of nodes
+func Schedule(nodes []Node) CarbonEfficiency {
+	var ce CarbonEfficiency = MaximumCarbonEfficiency
+	// TODO min over node.CarbonEfficiency
+	return ce
+}

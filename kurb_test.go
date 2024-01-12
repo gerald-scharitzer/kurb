@@ -4,17 +4,28 @@ import (
 	"testing"
 )
 
-func TestKurb(t *testing.T) {
-	want := "kurb"
-	result := Name()
+func TestNode(t *testing.T) {
+	want := Node{CarbonEfficiency: 1}
+	result := want
 	if want != result {
 		t.Fatal("failed")
 	}
 }
 
-func TestPreScore(t *testing.T) {
-	var want *Status = &Status_Success
-	result := PreScore(nil, nil)
+// TODO parameterize want
+func TestPod0(t *testing.T) {
+	var want *Node = nil
+	pod := Pod{want}
+	result := pod.Node
+	if want != result {
+		t.Fatal("failed")
+	}
+}
+
+func TestPod1(t *testing.T) {
+	want := &Node{CarbonEfficiency: 1}
+	pod := Pod{want}
+	result := pod.Node
 	if want != result {
 		t.Fatal("failed")
 	}
