@@ -44,3 +44,8 @@ Following the availability of carbon-efficient energy along the globe improves t
 
 Sustainable Computing -- Without the Hot Air
 https://arxiv.org/abs/2207.00081
+
+# Develop
+
+1. Get with `git clone https://github.com/gerald-scharitzer/kurb.git`
+2. Test with `go test`

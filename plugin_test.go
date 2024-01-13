@@ -2,20 +2,18 @@ package kurb
 
 import (
 	"testing"
+
+	"gotest.tools/v3/assert"
 )
 
 func TestPlugin(t *testing.T) {
 	want := "kurb"
-	result := Name()
-	if want != result {
-		t.Fatal("failed")
-	}
+	got := Name()
+	assert.Equal(t, got, want)
 }
 
 func TestPreScore(t *testing.T) {
 	var want *Status = &Status_Success
-	result := PreScore(nil, nil)
-	if want != result {
-		t.Fatal("failed")
-	}
+	got := PreScore(nil, nil)
+	assert.Equal(t, got, want)
 }

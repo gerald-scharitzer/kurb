@@ -24,7 +24,7 @@ func Schedule(nodes []Node) CarbonEfficiency {
 	// max over node.CarbonEfficiency
 	for _, node := range nodes {
 		nce := node.CarbonEfficiency
-		if nce < ce {
+		if nce > ce {
 			ce = nce
 		}
 	}
