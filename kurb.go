@@ -17,7 +17,7 @@ type Pod struct {
 	Node *Node
 }
 
-// Get the lowest carbon efficiency of all nodes.
+// Get the highest carbon efficiency of all nodes.
 // Return MinimumCarbonEfficiency for an empty set of nodes
 func Schedule(nodes []Node) CarbonEfficiency {
 	var ce CarbonEfficiency = MinimumCarbonEfficiency
