@@ -14,9 +14,18 @@ Node score is a 64-bit signed binary integer, so that can store high values of c
 
 # Setup
 
-1. Create a Kubernetes cluster (https://kubernetes.io/docs/setup/)
-2. Label the work nodes with their carbon efficiency in Joule per kg CO2-equivalent (https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node)
-3. Configure a custom scheduler plugin that picks nodes with the highest carbon efficiency first (https://github.com/kubernetes-sigs/scheduler-plugins).
+Get a Kubernetes cluster (https://kubernetes.io/docs/setup/)
+
+## Inter-Cluster
+
+1. Label at least one node in the cluster with the carbon efficiency of the cluster in Joule per kg CO2-equivalent.
+2. Select this node via its label and the set-based requirement, that the label key is present.
+3. Read the label via the Kubernetes API.
+
+## Intra-Cluster
+
+1. Label the work nodes with their carbon efficiency in Joule per kg CO2-equivalent (https://kubernetes.io/docs/tasks/configure-pod-container/assign-pods-nodes/#add-a-label-to-a-node)
+2. Configure a custom scheduler plugin that picks nodes with the highest carbon efficiency first (https://github.com/kubernetes-sigs/scheduler-plugins).
 
 # Limits
 
