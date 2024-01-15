@@ -2,18 +2,39 @@
 // https://github.com/kubernetes/client-go/tree/master/examples/in-cluster-client-configuration
 package kurb
 
-import "k8s.io/client-go/rest"
+import (
+	"flag"
+	"path/filepath"
+
+	"k8s.io/client-go/rest"
+	"k8s.io/client-go/tools/clientcmd"
+	"k8s.io/client-go/util/homedir"
+)
 
 // TODO connect to the local Kubernetes API
 // If `remote` is true, then connect to a remote cluster. Else connect to the local cluster.
 func run(remote bool) {
+	var config *rest.Config
+	var err error
 	if remote {
-		// TODO remote https://github.com/kubernetes/client-go/tree/master/examples/out-of-cluster-client-configuration
-	} else {
-		config, err := rest.InClusterConfig()
+		var kubeconfig *string
+		if home := homedir.HomeDir(); home != "" {
+			kubeconfig = flag.String("kubeconfig", filepath.Join(home, ".kube", "config"), "(optional) absolute path to the kubeconfig file")
+		} else {
+			kubeconfig = flag.String("kubeconfig", "", "absolute path to the kubeconfig file")
+		}
+		flag.Parse()
+
+		// use the current context in kubeconfig
+		config, err = clientcmd.BuildConfigFromFlags("", *kubeconfig)
 		if err != nil {
 			panic(err.Error())
 		}
-		println(config)
+	} else {
+		config, err = rest.InClusterConfig()
+		if err != nil {
+			panic(err.Error())
+		}
 	}
+	println(config)
 }
