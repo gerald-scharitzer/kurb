@@ -12,6 +12,13 @@ Configure the Kubernetes scheduler to create pods on the eligible nodes with the
 
 Node score is a 64-bit signed binary integer, so that can store high values of carbon efficiency.
 
+## Optimize
+
+the carbon efficiency of the workload by scheduling it on the nodes with the highest efficiency.
+
+This is a [bin packing problem](https://en.wikipedia.org/wiki/Bin_packing_problem), which is NP-hard.
+So the scheduling strategy is heuristic.
+
 # Setup
 
 Get a Kubernetes cluster (https://kubernetes.io/docs/setup/)

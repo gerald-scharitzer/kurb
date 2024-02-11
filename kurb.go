@@ -1,3 +1,4 @@
+// Schedule pods on nodes based on carbon efficiency.
 package kurb
 
 // Carbon efficiency is the amount of energy that can be obtained per mass of carbon dioxide equivalent in joule per kilogram.
